@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+	<meta charset="utf-8">
+	<title>Contingut segons nota</title>
+</head>
+<body>
+
+<?php 
+if (isset($_POST['enviar']) && is_numeric($_POST['nota']) && $_POST['nota']!=""){
+
+	//echo "Form enviat";
+
+	if($_POST['nota']<5){
+		//echo "Suspendido";
+
+		?>
+		<h1>SUSPENDIDO</h1>
+		<p>Tu nota es: <?php echo $_POST['nota']; ?></p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<a href="#">Mas info sobre la recuperación</a>
+
+		<?php 
+
+	}else{
+		//echo "Aprobado";
+		?>
+
+		<h1>APROBADO</h1>
+		<p>Tu nota es: <strong><?php echo $_POST['nota']; ?></strong></p>
+		<table>
+			<tr>
+				<td>Curs 2</td>
+				<td>Curs 3</td>
+				<td>Curs 4</td>
+			</tr>
+			<tr>
+				<td>Comença al Juny</td>
+				<td>Comença al Juliol</td>
+				<td>Comença al Setembre</td>
+			</tr>
+		</table>
+
+		<?php 
+
+	}
+
+}else{
+	//echo "Form NOOO enviat";
+
+?>
+
+	<h1>Nota Final</h1>
+
+	<?php 
+		if(isset($_POST['enviar']) && $_POST['nota']==""){
+			 echo "<p>La casilla esta vacía. No has introducido nada</p>";
+		}
+
+		if(isset($_POST['enviar']) && !is_numeric($_POST['nota']) && $_POST['nota']!=""){
+			echo "<p>El valor que has puesto no es un número</p>";
+		}
+
+	?>
+
+	<form action="#" method="POST">
+		Introduiex la nota final<input type="text" name="nota">
+		<input type="submit" name="enviar" value="Enviar Nota">
+	</form>
+
+
+<?php 
+
+}
+
+?>
+
+</body>
+</html>
